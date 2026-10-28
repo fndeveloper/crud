@@ -1,0 +1,148 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // Array mein maximum 100 values store ho sakti hain
+    int arr[100] = {10, 20, 30, 40, 50};
+
+    // Abhi array mein 5 values hain
+    int size = 5;
+
+    // Variables declare kiye
+    int choice, value, index;
+
+    // Menu baar baar show hoga jab tak user Exit nahi karega
+    do {
+
+        cout << "\n\n===== ARRAY CRUD MENU =====";
+        cout << "\n1. Add Value";
+        cout << "\n2. Display Values";
+        cout << "\n3. Update Value";
+        cout << "\n4. Delete Value";
+        cout << "\n5. Exit";
+
+        // User se choice lena
+        cout << "\nEnter your choice: ";
+        cin >> choice;
+
+
+        // CREATE: Array mein new value add karna
+        if (choice == 1) {
+
+            // Check karna ke array full toh nahi
+            if (size < 100) {
+
+                cout << "Enter value to add: ";
+                cin >> value;
+
+                // New value array ke end mein add hogi
+                arr[size] = value;
+
+                // Array ki size ek barha do
+                size++;
+
+                cout << "Value added successfully!";
+            }
+            else {
+                cout << "Array is full!";
+            }
+
+        }
+
+
+        // READ: Array ki saari values display karna
+        else if (choice == 2) {
+
+            // Agar array empty hai
+            if (size == 0) {
+                cout << "Array is empty!";
+            }
+            else {
+
+                cout << "Array Values: ";
+
+                // Loop se saari values print karna
+                for (int i = 0; i < size; i++) {
+                    cout << arr[i] << " ";
+                }
+
+            }
+
+        }
+
+
+        // UPDATE: Existing value change karna
+        else if (choice == 3) {
+
+            // User se index lena
+            cout << "Enter index to update (0 to "
+                 << size - 1 << "): ";
+            cin >> index;
+
+            // Check karna ke index valid hai
+            if (index >= 0 && index < size) {
+
+                cout << "Enter new value: ";
+                cin >> value;
+
+                // Purani value ki jagah new value
+                arr[index] = value;
+
+                cout << "Value updated successfully!";
+            }
+            else {
+                cout << "Invalid index!";
+            }
+
+        }
+
+
+        // DELETE: Array se value remove karna
+        else if (choice == 4) {
+
+            // User se index lena
+            cout << "Enter index to delete (0 to "
+                 << size - 1 << "): ";
+            cin >> index;
+
+            // Check karna ke index valid hai
+            if (index >= 0 && index < size) {
+
+                // Baad wali values ko left shift karna
+                for (int i = index; i < size - 1; i++) {
+                    arr[i] = arr[i + 1];
+                }
+
+                // Array ki current size ek kam karna
+                size--;
+
+                cout << "Value deleted successfully!";
+            }
+            else {
+                cout << "Invalid index!";
+            }
+
+        }
+
+
+        // EXIT: Program band karna
+        else if (choice == 5) {
+
+            cout << "Program ended!";
+
+        }
+
+
+        // Agar user 1 se 5 ke ilawa choice de
+        else {
+
+            cout << "Invalid choice! Try again.";
+
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
