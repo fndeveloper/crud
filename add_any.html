@@ -1,0 +1,54 @@
+
+#include <iostream>
+using namespace std;
+
+struct Quiz {
+    int num;
+    Quiz* next;
+};
+
+int main() {
+
+    // First Node
+    Quiz* Q = new Quiz();
+    Q->num = 20;
+    Q->next = nullptr;
+
+    // Second Node
+    Quiz* Q1 = new Quiz();
+    Q1->num = 10;
+    Q1->next = nullptr;
+
+    // Third Node
+    Quiz* Q2 = new Quiz();
+    Q2->num = 30;
+    Q2->next = nullptr;
+
+    // Connect Nodes
+    Q->next = Q1;
+    Q1->next = Q2;
+
+    // New Node
+    Quiz* newNode = new Quiz();
+    newNode->num = 50;
+
+    // Move to Position 1
+    Quiz* temp = Q;
+
+    for (int i = 1; i < 2; i++) {
+        temp = temp->next;
+    }
+
+    // Insert at Position 2
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    // Display Linked List
+    for (Quiz* temp = Q; temp != nullptr; temp = temp->next) {
+        cout << temp->num << " -> ";
+    }
+
+    cout << "NULL";
+
+    return 0;
+}
