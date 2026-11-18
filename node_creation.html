@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+struct Quiz
+{
+    int num;
+    Quiz* next;
+};
+
+
+int main(){
+
+Quiz* Q=new Quiz();
+Q->num=20;
+Q->next=nullptr;
+
+
+Quiz* Q1=new Quiz();
+Q1->num=10;
+Q1->next=nullptr;
+
+
+Q->next=Q1;
+
+
+cout << Q->num;
+cout << Q1->num;
+
+}
